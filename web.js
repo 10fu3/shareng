@@ -3,7 +3,7 @@ var express = require('express');
 var app = express.createServer();
 
 var list = Array('SharedNGID');
-var users = Map()
+var users = Map();
 
 class User{
   constructor(uid) {
@@ -17,10 +17,10 @@ class User{
   addTarget(target){
     if(!this.apendedID.includes(target)){
       this.apendedID.push(target);
-      list.push(target)
+      list.push(target);
     }
   }
-}
+};
 
 app.get('/uid/:uid/targetid/:target/', function (req, res) {
   let uid = req.params['uid'];
@@ -28,15 +28,16 @@ app.get('/uid/:uid/targetid/:target/', function (req, res) {
   if(!users.has(uid)){
     var u = new User(uid);
     users.set(uid,new User(uid));
+    list.push(target);
   }
   var u = users.get(uid);
   u.addTarget(target);
-  res.send(list)
-})
+  res.send(list);
+});
 
 app.get('/',function(req,res){
-  res.send(list)
-})
+  res.send(list);
+});
 
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
