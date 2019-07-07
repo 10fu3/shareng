@@ -29,11 +29,10 @@ app.get('/uid/:uid/targetid/:target/', function (req, res) {
     var u = new User(uid);
     users[uid] = u;
   }
-  // var u = users[uid];
-  // u.addTarget(target);
-  // users[uid] = u;
-  // res.send(list);
-  // res.send('A')
+  var u = users[uid];
+  u.addTarget(target);
+  users[uid] = u;
+  res.send(list);
 });
 
 app.get('/',function(req,res){
