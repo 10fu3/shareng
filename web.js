@@ -38,6 +38,7 @@ app.get('/uid/:uid/targetid/:target/', function (req, res) {
 
 app.get('/',function(req,res){
   //res.send(list);
+  res.send('A')
 });
 
 var port = process.env.PORT || 3000;
