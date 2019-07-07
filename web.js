@@ -17,10 +17,14 @@ class User{
   addTarget(target){
     if(!this.apendedID.includes(target)){
       this.apendedID.push(target);
-      //list.push(target);
-      if(users.filter( function( value ) {
-        value.apendedID.includes(target)
-      }).length >= 30 && !list.includes(target)){
+      var count = 0;
+      for(let i = 0; i < users.length; i++) {
+        let u = users[i];
+        if(u.apendedID.includes(target)){
+          count += 1;
+        }
+      }
+      if(count > 9){
         list.push(target)
       }
     }
