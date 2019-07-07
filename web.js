@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express.createServer();
 
-// var list = Array('SharedNGID');
+ var list = Array('SharedNGID');
 // var users = Map();
 
 // class User{
