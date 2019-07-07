@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express.createServer();
 
- var list = Array('SharedNGID');
+// var list = Array('SharedNGID');
 // var users = Map();
 
 // class User{
@@ -33,6 +33,7 @@ app.get('/uid/:uid/targetid/:target/', function (req, res) {
   // var u = users.get(uid);
   // u.addTarget(target);
   // res.send(list);
+  res.send('A')
 });
 
 app.get('/',function(req,res){
