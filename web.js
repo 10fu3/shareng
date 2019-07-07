@@ -25,7 +25,7 @@ class User{
         }
       }
       if(count > 9){
-        list.push(target)
+        list.push(target);
       }
     }
   }
