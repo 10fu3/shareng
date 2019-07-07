@@ -2,9 +2,9 @@ var express = require('express');
 
 var app = express.createServer();
 
-app.get('/', function(req, res) {
-    res.send(req.connection.remoteAddress);
-});
+app.get('/users/:UID/targetID/:target/', function (req, res) {
+  res.send(req.params['UID']+req.params['target'])
+})
 
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
