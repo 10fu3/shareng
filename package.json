@@ -1,7 +1,7 @@
 {
-  "name": "node-hello-world",
+  "name": "shareng",
   "version": "0.0.1",
   "dependencies": {
-    "express": "2.3.11"
+    "express": "3.11.0"
   }
 }
