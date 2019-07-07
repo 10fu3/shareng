@@ -2,8 +2,8 @@ var express = require('express');
 
 var app = express.createServer();
 
- var list = Array();
- var users = Array();
+ var list = Array();//共有NGのリスト
+ var users = Array();//一時共有
 
 class User{
   constructor(uid) {
@@ -25,16 +25,16 @@ class User{
 app.get('/uid/:uid/targetid/:target/', function (req, res) {
   let uid = req.params['uid'];
   let target = req.params['target'];
-  // if(!users.has(uid)){
-  //   var u = new User(uid);
-  //   users[uid] = u
-  //   list.push(target);
-  // }
+  if(!users.has(uid)){
+    var u = new User(uid);
+    users[uid] = u;
+
+  }
   // var u = users[uid];
   // u.addTarget(target);
   // users[uid] = u;
   // res.send(list);
-  res.send('A')
+  // res.send('A')
 });
 
 app.get('/',function(req,res){
