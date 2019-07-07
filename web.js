@@ -3,7 +3,7 @@ var express = require('express');
 var app = express.createServer();
 
  var list = Array();
- var users = Map();
+ var users = Array();
 
 // class User{
 //   constructor(uid) {
