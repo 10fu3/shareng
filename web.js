@@ -17,7 +17,12 @@ class User{
   addTarget(target){
     if(!this.apendedID.includes(target)){
       this.apendedID.push(target);
-      list.push(target);
+      //list.push(target);
+      if(users.filter( function( value ) {
+        value.apendedID.includes(target)
+      }).length >= 30 && !list.includes(target)){
+        list.push(target)
+      }
     }
   }
 }
