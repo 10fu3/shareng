@@ -5,35 +5,36 @@ var app = express.createServer();
  var list = Array();
  var users = Array();
 
-// class User{
-//   constructor(uid) {
-//     this.uid = uid;
-//     this.apendedID = Array();
-//   }
+class User{
+  constructor(uid) {
+    this.uid = uid;
+    this.apendedID = Array();
+  }
   
-//   getID(){
-//     return this.uid;
-//   }
-//   addTarget(target){
-//     if(!this.apendedID.includes(target)){
-//       this.apendedID.push(target);
-//       list.push(target);
-//     }
-//   }
-// }
+  getID(){
+    return this.uid;
+  }
+  addTarget(target){
+    if(!this.apendedID.includes(target)){
+      this.apendedID.push(target);
+      list.push(target);
+    }
+  }
+}
 
 app.get('/uid/:uid/targetid/:target/', function (req, res) {
-  // let uid = req.params['uid'];
-  // let target = req.params['target'];
-  // if(!users.has(uid)){
-  //   var u = new User(uid);
-  //   users.set(uid,new User(uid));
-  //   list.push(target);
-  // }
-  // var u = users.get(uid);
-  // u.addTarget(target);
-  // res.send(list);
-  res.send('A')
+  let uid = req.params['uid'];
+  let target = req.params['target'];
+  if(!users.has(uid)){
+    var u = new User(uid);
+    users.set(uid,new User(uid));
+    list.push(target);
+  }
+  var u = users[uid];
+  u.addTarget(target);
+  users[uid] = u;
+  res.send(list);
+  //res.send('A')
 });
 
 app.get('/',function(req,res){
