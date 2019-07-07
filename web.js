@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express.createServer();
 
-// var list = Array('SharedNGID');
+ var list = Array();
 // var users = Map();
 
 // class User{
@@ -37,8 +37,7 @@ app.get('/uid/:uid/targetid/:target/', function (req, res) {
 });
 
 app.get('/',function(req,res){
-  //res.send(list);
-  res.send('A')
+  res.send(list);
 });
 
 var port = process.env.PORT || 3000;
