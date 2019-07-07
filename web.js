@@ -27,7 +27,7 @@ app.get('/uid/:uid/targetid/:target/', function (req, res) {
   let target = req.params['target'];
   if(!users.has(uid)){
     var u = new User(uid);
-    users.set(uid,new User(uid));
+    users[uid] = u
     list.push(target);
   }
   var u = users[uid];
