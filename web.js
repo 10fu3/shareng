@@ -3,7 +3,7 @@ var express = require('express');
 var app = express.createServer();
 
  var list = Array();//共有NGのリスト
- var users = Array();//一時共有
+ var users = Object();//一時共有
 
 class User{
   constructor(uid) {
@@ -18,13 +18,12 @@ class User{
     if(!this.apendedID.includes(target)){
       this.apendedID.push(target);
       var count = 0;
-      for(let i = 0; i < users.length; i++) {
-        let u = users[i];
-        if(u.apendedID.includes(target)){
+      Object.keys(users).forEach(function (key) {
+        if(users[key].apendedID.includes(target)){
           count += 1;
         }
-      }
-      if(count > 9){
+      });
+      if(count > 29 && !list.includes(target)){
         list.push(target);
       }
     }
@@ -32,8 +31,8 @@ class User{
 }
 
 app.get('/uid/:uid/targetid/:target/', function (req, res) {
-  let uid = req.params['uid'];
-  let target = req.params['target'];
+  let uid = String(req.params['uid']);
+  let target = String(req.params['target']);
   if(!users[uid]){
     var u = new User(uid);
     users[uid] = u;
@@ -41,11 +40,22 @@ app.get('/uid/:uid/targetid/:target/', function (req, res) {
   var u = users[uid];
   u.addTarget(target);
   users[uid] = u;
-  res.send(list);
+
+  var values = ''
+  for (i in list){
+    values += i;
+    values += '\n';
+  }
+  res.send(values);
 });
 
 app.get('/',function(req,res){
-  res.send(list);
+  var values = ''
+  for (i in list){
+    values += i;
+    values += '\n';
+  }
+  res.send(values);
 });
 
 var port = process.env.PORT || 3000;
