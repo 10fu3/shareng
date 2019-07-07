@@ -2,6 +2,7 @@
   "name": "shareng",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.11.0"
+    "express": "^3.11.0",
+    "node-fetch": "^2.6.0"
   }
 }
