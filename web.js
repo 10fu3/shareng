@@ -25,16 +25,16 @@ class User{
 app.get('/uid/:uid/targetid/:target/', function (req, res) {
   let uid = req.params['uid'];
   let target = req.params['target'];
-  if(!users.has(uid)){
-    var u = new User(uid);
-    users[uid] = u
-    list.push(target);
-  }
-  var u = users[uid];
-  u.addTarget(target);
-  users[uid] = u;
-  res.send(list);
-  //res.send('A')
+  // if(!users.has(uid)){
+  //   var u = new User(uid);
+  //   users[uid] = u
+  //   list.push(target);
+  // }
+  // var u = users[uid];
+  // u.addTarget(target);
+  // users[uid] = u;
+  // res.send(list);
+  res.send('A')
 });
 
 app.get('/',function(req,res){
