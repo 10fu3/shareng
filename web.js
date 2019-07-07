@@ -20,19 +20,19 @@ class User{
       list.push(target);
     }
   }
-};
+}
 
 app.get('/uid/:uid/targetid/:target/', function (req, res) {
-  let uid = req.params['uid'];
-  let target = req.params['target'];
-  if(!users.has(uid)){
-    var u = new User(uid);
-    users.set(uid,new User(uid));
-    list.push(target);
-  }
-  var u = users.get(uid);
-  u.addTarget(target);
-  res.send(list);
+  // let uid = req.params['uid'];
+  // let target = req.params['target'];
+  // if(!users.has(uid)){
+  //   var u = new User(uid);
+  //   users.set(uid,new User(uid));
+  //   list.push(target);
+  // }
+  // var u = users.get(uid);
+  // u.addTarget(target);
+  // res.send(list);
 });
 
 app.get('/',function(req,res){
