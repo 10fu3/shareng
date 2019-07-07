@@ -25,10 +25,9 @@ class User{
 app.get('/uid/:uid/targetid/:target/', function (req, res) {
   let uid = req.params['uid'];
   let target = req.params['target'];
-  if(!users.has(uid)){
+  if(!users[uid]){
     var u = new User(uid);
     users[uid] = u;
-
   }
   // var u = users[uid];
   // u.addTarget(target);
