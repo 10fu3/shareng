@@ -1,6 +1,7 @@
 var express = require('express');
 const fetch = require('node-fetch');
 var app = express.createServer();
+var port = process.env.PORT || 3000;
 
 var day = 0;
 var nextday = 0;
@@ -26,7 +27,7 @@ class User{
           count += 1;
         }
       });
-      if(count > 29 && !list.includes(target)){
+      if(count > 1 && !list.includes(target)){
         list.push(target);
       }
     }
@@ -57,10 +58,10 @@ function IfneedResetArray(){
         });
 }
 
-app.get('/uid/:uid/targetid/:target/', function (req, res) {
+app.get('/', function (req, res) {
   IfneedResetArray();
-  let uid = String(req.params['uid']);
-  let target = String(req.params['target']);
+  let uid = String(req.query.uid);
+  let target = String(req.query.target);
   if(!users[uid]){
     var u = new User(uid);
     users[uid] = u;
@@ -71,7 +72,8 @@ app.get('/uid/:uid/targetid/:target/', function (req, res) {
 
   var values = ''
   for (i in list){
-    values += i;
+    console.log(list[i]);
+    values += list[i];
     values += '\n';
   }
   res.send(values);
@@ -89,7 +91,6 @@ app.get('/',function(req,res){
   res.send(values);
 });
 
-var port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log("Listening on " + port);
 });
